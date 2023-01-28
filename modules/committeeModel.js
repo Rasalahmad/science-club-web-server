@@ -4,7 +4,7 @@ const committeeSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Name is required"],
       trim: true,
     },
     about: {
@@ -29,7 +29,7 @@ const committeeSchema = mongoose.Schema(
     linkedIn: {
       type: String,
     },
-    avatar: {
+    image: {
       type: String,
     },
     role: {
