@@ -2,7 +2,7 @@ import uploader from "../utils/singleUploader";
 
 function avatarUpload(req, res, next) {
   const upload = uploader(
-    "avatars",
+    "image",
     ["image/jpeg", "image/jpg", "image/png"],
     1000000,
     "Only .jpg, jpeg or .png format allowed!"

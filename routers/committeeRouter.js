@@ -1,9 +1,12 @@
 import express from "express";
-import { postCommittee } from "../controllers/committeeController";
-import avatarUpload from "../middleware/avatarUpload";
+import {
+  postCommittee,
+  getCommittee,
+} from "../controllers/committeeController";
 
 const router = express.Router();
 
-router.post("/committee", avatarUpload, postCommittee);
+router.post("/", postCommittee);
+router.get("/", getCommittee);
 
 export default router;
