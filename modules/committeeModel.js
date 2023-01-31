@@ -29,6 +29,10 @@ const committeeSchema = mongoose.Schema(
     linkedIn: {
       type: String,
     },
+    university: {
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
     },
