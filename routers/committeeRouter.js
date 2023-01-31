@@ -2,7 +2,7 @@ import express from "express";
 import {
   postCommittee,
   getCommittee,
-} from "../controllers/committeeController";
+} from "../controllers/committeeController.js";
 import avatarUpload from "../middleware/avatarUpload";
 
 const router = express.Router();

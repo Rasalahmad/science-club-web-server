@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import committeeRouter from "./routers/committeeRouter.js";
 import cors from "cors";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -11,6 +12,21 @@ const corsOrigin = {
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOrigin));
+
+// database connection
+mongoose.set("strictQuery", false);
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO);
+    console.log("Connected to mongoDB.");
+  } catch (error) {
+    throw error;
+  }
+};
+
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB disconnected!");
+});
 
 // request parsers
 app.use(express.json());
@@ -29,5 +45,6 @@ app.get("/", (req, res) => {
 app.use("/api/committee", committeeRouter);
 
 app.listen(process.env.PORT, () => {
+  connect();
   console.log("Connected");
 });
