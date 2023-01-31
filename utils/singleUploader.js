@@ -9,14 +9,10 @@ function uploader(
   max_file_size,
   error_msg
 ) {
-  // File upload folder
-  const __dirname = path.resolve();
-  const UPLOADS_FOLDER = `${__dirname}/../public/uploads/${subfolder_path}/`;
-
   // define the storage
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, UPLOADS_FOLDER);
+      cb(null, "./upload/images");
     },
     filename: (req, file, cb) => {
       const fileExt = path.extname(file.originalname);
@@ -47,8 +43,6 @@ function uploader(
       }
     },
   });
-
-  console.log(upload);
 
   return upload;
 }

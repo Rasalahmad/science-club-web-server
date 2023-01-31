@@ -1,13 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import committeeRouter from "./routers/committeeRouter.js";
-import multer from "multer";
 import cors from "cors";
 
 const app = express();
 
 const corsOrigin = {
-  origin: "http://localhost:3000", //or whatever port your frontend is using
+  origin: "http://localhost:3000",
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -18,22 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 
-// upload image
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./upload/images");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
-});
-
-const upload = multer({ storage: storage });
-
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  const file = req.file;
-  res.status(200).json(file.filename);
-});
+// access static file
+app.use(express.static("upload"));
+app.use("/images", express.static("images"));
 
 app.get("/", (req, res) => {
   res.send("Running");

@@ -1,4 +1,4 @@
-import uploader from "../utils/singleUploader";
+import uploader from "../utils/singleUploader.js";
 
 function avatarUpload(req, res, next) {
   const upload = uploader(
