@@ -1,10 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+import mongoose from "mongoose";
 import committeeRouter from "./routers/committeeRouter.js";
 import facultyRouter from "./routers/facultyRouter.js";
 import noticeRouter from "./routers/noticeRouter.js";
-import cors from "cors";
-import mongoose from "mongoose";
+import eventRouter from "./routers/eventRouter.js";
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.get("/", (req, res) => {
 app.use("/api/committee", committeeRouter);
 app.use("/api/faculty", facultyRouter);
 app.use("/api/notice", noticeRouter);
+app.use("/api/event", eventRouter);
 
 app.listen(process.env.PORT, () => {
   connect();
