@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const committeeSchema = mongoose.Schema(
+const facultySchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -16,10 +16,6 @@ const committeeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    batch: {
-      type: String,
-      required: true,
-    },
     fbLink: {
       type: String,
     },
@@ -28,6 +24,10 @@ const committeeSchema = mongoose.Schema(
     },
     linkedIn: {
       type: String,
+    },
+    university: {
+      type: String,
+      required: true,
     },
     image: {
       type: String,
@@ -43,6 +43,6 @@ const committeeSchema = mongoose.Schema(
   }
 );
 
-const Committee = mongoose.model("committee", committeeSchema);
+const Faculty = mongoose.model("faculty", facultySchema);
 
-export default Committee;
+export default Faculty;
