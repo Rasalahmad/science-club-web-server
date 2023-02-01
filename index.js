@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import committeeRouter from "./routers/committeeRouter.js";
 import facultyRouter from "./routers/facultyRouter.js";
+import noticeRouter from "./routers/noticeRouter.js";
 import cors from "cors";
 import mongoose from "mongoose";
 
@@ -45,6 +46,7 @@ app.get("/", (req, res) => {
 // routing setup
 app.use("/api/committee", committeeRouter);
 app.use("/api/faculty", facultyRouter);
+app.use("/api/notice", noticeRouter);
 
 app.listen(process.env.PORT, () => {
   connect();
