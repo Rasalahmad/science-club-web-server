@@ -3,13 +3,11 @@ import Event from "../modules/eventModel";
 export const postEvent = async (req, res, next) => {
   const event = new Event({ ...req.body, image: req?.files[0]?.filename });
   try {
-    if (event._id) {
-      event.save();
-      res.status(200).json({
-        status: true,
-        message: "Event published successfully",
-      });
-    }
+    await event.save();
+    res.status(200).json({
+      status: true,
+      message: "Event published successfully",
+    });
   } catch (error) {
     if (error.name === "ValidationError") {
       let errors = {};
