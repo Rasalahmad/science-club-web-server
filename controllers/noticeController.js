@@ -19,7 +19,10 @@ export const postNotice = async (req, res, next) => {
         error: errors,
       });
     }
-    res.status(500).json("Something went wrong");
+    res.status(500).json({
+      status: false,
+      message: "Something went wrong",
+    });
   }
 };
 export const getNotice = async (req, res, next) => {

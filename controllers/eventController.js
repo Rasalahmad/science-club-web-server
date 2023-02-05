@@ -19,34 +19,59 @@ export const postEvent = async (req, res, next) => {
         error: errors,
       });
     }
-    res.status(500).json("Something went wrong");
+    res.status(500).json({
+      status: false,
+      message: "Something went wrong",
+    });
   }
 };
 export const getEvent = async (req, res, next) => {
-  const event = await Event.find({});
-  res.status(200).json({
-    status: true,
-    message: "Event fetch successfully",
-    data: event,
-  });
+  try {
+    const event = await Event.find({});
+    res.status(200).json({
+      status: true,
+      message: "Event fetch successfully",
+      data: event,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Event can't fetch",
+      error,
+    });
+  }
 };
 export const updateEvent = async (req, res, next) => {
-  const updated = await Event.findByIdAndUpdate(
-    req.params.id,
-    { $set: req.body },
-    { new: true }
-  );
-  res.status(200).json({
-    status: true,
-    message: "Event updated successfully",
-    data: updated,
-  });
+  try {
+    const updated = await Event.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json({
+      status: true,
+      message: "Event updated successfully",
+      data: updated,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Event can't update",
+      error,
+    });
+  }
 };
 export const deleteEvent = async (req, res, next) => {
-  console.log(req.params.id);
-  await Event.findByIdAndDelete(req.params.id);
-  res.status(200).json({
-    status: true,
-    message: "Event deleted successfully",
-  });
+  try {
+    await Event.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      status: true,
+      message: "Event deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: "Event can't delete",
+    });
+  }
 };
