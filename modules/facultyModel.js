@@ -43,6 +43,4 @@ const facultySchema = mongoose.Schema(
   }
 );
 
-const Faculty = mongoose.model("faculty", facultySchema);
-
-export default Faculty;
+export default mongoose.model("faculty", facultySchema);

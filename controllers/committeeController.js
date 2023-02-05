@@ -1,23 +1,24 @@
 import Committee from "../modules/committeeModel";
 
 export const postCommittee = async (req, res, next) => {
-  const committee = new Committee({
-    ...req.body,
-    image: req?.files[0]?.filename,
-  });
+  const committee = new Committee(req.body);
   try {
-    if (req.files && req.files.length > 0) {
-      await committee.save();
-    }
+    await committee.save();
     res
       .status(200)
       .json({ status: true, message: "Member uploaded successfully" });
   } catch (error) {
-    res.status(400).json({
-      status: false,
-      message: "Member can't upload",
-      error,
-    });
+    if (error.name === "ValidationError") {
+      let errors = {};
+      Object.keys(error.errors).forEach((key) => {
+        errors = error.errors[key];
+      });
+      return res.status(400).json({
+        status: false,
+        error: errors,
+      });
+    }
+    res.status(500).json("Something went wrong");
   }
 };
 

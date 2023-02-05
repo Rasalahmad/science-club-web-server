@@ -9,16 +9,16 @@ const committeeSchema = mongoose.Schema(
     },
     about: {
       type: String,
-      required: true,
+      // required: [true, "About is required"],
       trim: true,
     },
     designation: {
       type: String,
-      required: true,
+      required: [true, "Designation is required"],
     },
     batch: {
       type: String,
-      required: true,
+      required: [true, "Batch is required"],
     },
     fbLink: {
       type: String,
