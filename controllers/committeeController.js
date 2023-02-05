@@ -1,7 +1,10 @@
 import Committee from "../modules/committeeModel";
 
 export const postCommittee = async (req, res, next) => {
-  const committee = new Committee(req.body);
+  const committee = new Committee({
+    ...req.body,
+    image: req?.files[0]?.filename,
+  });
   try {
     await committee.save();
     res
