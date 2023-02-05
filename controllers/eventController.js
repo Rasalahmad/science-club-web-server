@@ -1,12 +1,22 @@
 import Event from "../modules/eventModel";
 
 export const postEvent = async (req, res, next) => {
-  const event = new Event({ ...req.body, image: req?.files[0]?.filename });
-  event.save();
-  res.status(200).json({
-    status: true,
-    message: "Event published successfully",
-  });
+  try {
+    const event = new Event({ ...req.body, image: req?.files[0]?.filename });
+    if (event._id) {
+      event.save();
+      res.status(200).json({
+        status: true,
+        message: "Event published successfully",
+      });
+    }
+  } catch (error) {
+    res.status(200).json({
+      status: false,
+      message: "Event Can't Publish",
+      error,
+    });
+  }
 };
 export const getEvent = async (req, res, next) => {
   const event = await Event.find({});
