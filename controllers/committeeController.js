@@ -3,7 +3,7 @@ import Committee from "../modules/committeeModel";
 export const postCommittee = async (req, res, next) => {
   const committee = new Committee({
     ...req.body,
-    image: req.files[0].filename,
+    image: req?.files[0]?.filename,
   });
   try {
     if (req.files && req.files.length > 0) {

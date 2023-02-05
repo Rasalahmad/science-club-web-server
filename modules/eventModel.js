@@ -4,12 +4,12 @@ const eventSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "titile is required"],
+      required: [true, "Titile is required"],
       trim: true,
     },
     desc: {
       type: String,
-      required: [true, "description is required"],
+      required: [true, "Description is required"],
     },
     image: {
       type: String,
@@ -20,6 +20,4 @@ const eventSchema = mongoose.Schema(
   }
 );
 
-const Event = mongoose.model("events", eventSchema);
-
-export default Event;
+export default mongoose.model("events", eventSchema);

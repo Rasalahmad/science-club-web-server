@@ -1,8 +1,8 @@
 import Event from "../modules/eventModel";
 
 export const postEvent = async (req, res, next) => {
+  const event = new Event({ ...req.body, image: req?.files[0]?.filename });
   try {
-    const event = new Event({ ...req.body, image: req?.files[0]?.filename });
     if (event._id) {
       event.save();
       res.status(200).json({
@@ -11,11 +11,17 @@ export const postEvent = async (req, res, next) => {
       });
     }
   } catch (error) {
-    res.status(200).json({
-      status: false,
-      message: "Event Can't Publish",
-      error,
-    });
+    if (error.name === "ValidationError") {
+      let errors = {};
+      Object.keys(error.errors).forEach((key) => {
+        errors = error.errors[key];
+      });
+      return res.status(400).json({
+        status: false,
+        error: errors,
+      });
+    }
+    res.status(500).json("Something went wrong");
   }
 };
 export const getEvent = async (req, res, next) => {
