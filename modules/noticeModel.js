@@ -4,12 +4,12 @@ const noticeSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "titile is required"],
+      required: [true, "Titile is required"],
       trim: true,
     },
     desc: {
       type: String,
-      required: [true, "description is required"],
+      required: [true, "Description is required"],
     },
     image: {
       type: String,
@@ -20,6 +20,4 @@ const noticeSchema = mongoose.Schema(
   }
 );
 
-const Notice = mongoose.model("notice", noticeSchema);
-
-export default Notice;
+export default mongoose.model("notice", noticeSchema);
