@@ -5,11 +5,10 @@ import {
   postFaculty,
   updateFaculty,
 } from "../controllers/facultyController.js";
-import avatarUpload from "../middleware/avatarUpload.js";
 
 const router = express.Router();
 
-router.post("/", avatarUpload, postFaculty);
+router.post("/", postFaculty);
 router.get("/", getFaculty);
 router.put("/:id", updateFaculty);
 router.delete("/:id", deleteFaculty);

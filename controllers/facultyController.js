@@ -1,15 +1,12 @@
 import Faculty from "../modules/facultyModel";
 
 export const postFaculty = async (req, res, next) => {
-  const faculty = new Faculty({
-    ...req.body,
-    image: req.files[0].filename,
-  });
+  const faculty = new Faculty(req.body);
   try {
     await faculty.save();
     res
       .status(200)
-      .json({ status: true, message: "Member uploaded successfully" });
+      .json({ status: true, message: "Faculty uploaded successfully" });
   } catch (error) {
     if (error.name === "ValidationError") {
       let errors = {};
