@@ -6,6 +6,7 @@ import committeeRouter from "./routers/committeeRouter.js";
 import facultyRouter from "./routers/facultyRouter.js";
 import noticeRouter from "./routers/noticeRouter.js";
 import eventRouter from "./routers/eventRouter.js";
+import multer from "multer";
 
 const app = express();
 
@@ -42,6 +43,22 @@ app.use("/images", express.static("images"));
 
 app.get("/", (req, res) => {
   res.send("Running");
+});
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./upload/images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  const file = req.file;
+  res.status(200).json(file.filename);
 });
 
 // routing setup
