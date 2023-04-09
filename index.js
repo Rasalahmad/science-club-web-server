@@ -67,7 +67,7 @@ app.use("/api/committee", committeeRouter);
 app.use("/api/faculty", facultyRouter);
 app.use("/api/notice", noticeRouter);
 app.use("/api/event", eventRouter);
-app.use("/api/cse", cseRouter);
+app.use("/api/result", cseRouter);
 
 app.listen(process.env.PORT, () => {
   connect();

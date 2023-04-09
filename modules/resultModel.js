@@ -3,35 +3,28 @@ import mongoose from "mongoose";
 const resultSchema = mongoose.Schema({
   department: {
     type: String,
-    enum: ["CSE", "BBA", "English", "HTM", "GDS", "MBA"],
     required: true,
   },
   semester: {
     type: Number,
-    enum: [8],
     required: true,
   },
-  student: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Student",
+  courseId: {
+    type: String,
     required: true,
   },
-  exam: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Exam",
+  courseName: {
+    type: String,
     required: true,
+  },
+  studentId: {
+    type: String,
+    required: true,
+    index: true, // Add an index for faster querying
   },
   marks: {
     type: Number,
     required: true,
-  },
-  grade: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
   },
 });
 

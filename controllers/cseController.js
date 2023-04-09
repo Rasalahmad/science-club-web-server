@@ -24,3 +24,24 @@ export const postResult = async (req, res, next) => {
     });
   }
 };
+
+export const getResult = async (req, res, next) => {
+  try {
+    const { studentId, semester } = req.query;
+    const result = await Result.find({
+      studentId: studentId,
+      semester: semester,
+    });
+    res.status(200).json({
+      status: true,
+      message: "Result fetch successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      message: "Can't get the result",
+      error,
+    });
+  }
+};
