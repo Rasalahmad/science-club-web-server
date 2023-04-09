@@ -33,6 +33,6 @@ const resultSchema = mongoose.Schema({
   },
 });
 
-const Result = mongoose.model("result", resultSchema);
+const CSEResult = mongoose.model("cse-result", resultSchema);
 
-export default Result;
+export default CSEResult;

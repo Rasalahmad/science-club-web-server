@@ -1,7 +1,7 @@
-import Result from "../modules/resultModel.js";
+import CSEResult from "../modules/cseModel.js";
 
 export const postResult = async (req, res, next) => {
-  const result = new Result(req.body);
+  const result = new CSEResult(req.body);
   try {
     await result.save();
     res
@@ -27,11 +27,13 @@ export const postResult = async (req, res, next) => {
 
 export const getResult = async (req, res, next) => {
   try {
-    const { studentId, semester } = req.query;
-    const result = await Result.find({
+    const { studentId, semester, exam } = req.query;
+    const result = await CSEResult.find({
       studentId: studentId,
       semester: semester,
+      exam: exam,
     });
+    console.log(result);
     res.status(200).json({
       status: true,
       message: "Result fetch successfully",

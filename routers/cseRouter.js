@@ -3,7 +3,7 @@ import { getResult, postResult } from "../controllers/cseController.js";
 
 const router = express.Router();
 
-router.post("/", postResult);
-router.get("/", getResult);
+router.post("/cse", postResult);
+router.get("/cse", getResult);
 
 export default router;
