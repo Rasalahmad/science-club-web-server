@@ -26,6 +26,11 @@ const resultSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  exam: {
+    type: String,
+    enum: ["mid-term", "final-term"],
+    required: true,
+  },
 });
 
 const Result = mongoose.model("result", resultSchema);
