@@ -33,7 +33,6 @@ export const getResult = async (req, res, next) => {
       semester: semester,
       exam: exam,
     });
-    console.log(result);
     res.status(200).json({
       status: true,
       message: "Result fetch successfully",
