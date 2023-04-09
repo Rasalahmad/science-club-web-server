@@ -6,6 +6,7 @@ import committeeRouter from "./routers/committeeRouter.js";
 import facultyRouter from "./routers/facultyRouter.js";
 import noticeRouter from "./routers/noticeRouter.js";
 import eventRouter from "./routers/eventRouter.js";
+import cseRouter from "./routers/cseRouter.js";
 import multer from "multer";
 
 const app = express();
@@ -66,6 +67,7 @@ app.use("/api/committee", committeeRouter);
 app.use("/api/faculty", facultyRouter);
 app.use("/api/notice", noticeRouter);
 app.use("/api/event", eventRouter);
+app.use("/api/cse", cseRouter);
 
 app.listen(process.env.PORT, () => {
   connect();

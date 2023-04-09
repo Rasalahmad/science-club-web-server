@@ -1,4 +1,4 @@
-import Faculty from "../modules/facultyModel";
+import Faculty from "../modules/facultyModel.js";
 
 export const postFaculty = async (req, res, next) => {
   const faculty = new Faculty(req.body);

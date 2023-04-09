@@ -1,4 +1,4 @@
-import Event from "../modules/eventModel";
+import Event from "../modules/eventModel.js";
 
 export const postEvent = async (req, res, next) => {
   const event = new Event({ ...req.body, image: req?.files[0]?.filename });

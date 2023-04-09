@@ -1,4 +1,4 @@
-import Committee from "../modules/committeeModel";
+import Committee from "../modules/committeeModel.js";
 
 export const postCommittee = async (req, res, next) => {
   const committee = new Committee(req.body);
