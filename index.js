@@ -11,12 +11,12 @@ import multer from "multer";
 
 const app = express();
 
-const corsOrigin = {
-  origin: "http://localhost:3000",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOrigin));
+// const corsOrigin = {
+//   origin: "http://localhost:3000",
+//   credentials: true,
+//   optionSuccessStatus: 200,
+// };
+app.use(cors());
 
 // database connection
 mongoose.set("strictQuery", false);
