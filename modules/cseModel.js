@@ -1,38 +1,40 @@
 import mongoose from "mongoose";
 
-const resultSchema = mongoose.Schema({
-  department: {
+const cseResultSchema = mongoose.Schema({
+  stdId: {
+    type: String,
+    required: true,
+  },
+  stdName: {
     type: String,
     required: true,
   },
   semester: {
-    type: Number,
-    required: true,
-  },
-  courseId: {
     type: String,
     required: true,
   },
-  courseName: {
+  examType: {
     type: String,
     required: true,
   },
-  studentId: {
-    type: String,
-    required: true,
-    index: true, // Add an index for faster querying
-  },
-  marks: {
-    type: Number,
-    required: true,
-  },
-  exam: {
-    type: String,
-    enum: ["mid-term", "final-term"],
-    required: true,
-  },
+  courses: [
+    {
+      courseId: {
+        type: String,
+        required: true,
+      },
+      courseName: {
+        type: String,
+        required: true,
+      },
+      cgpa: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
 });
 
-const CSEResult = mongoose.model("cse-result", resultSchema);
+const CSEResult = mongoose.model("cse-result", cseResultSchema);
 
 export default CSEResult;

@@ -27,11 +27,11 @@ export const postResult = async (req, res, next) => {
 
 export const getResult = async (req, res, next) => {
   try {
-    const { studentId, semester, exam } = req.query;
-    const result = await CSEResult.find({
-      studentId: studentId,
-      semester: semester,
-      exam: exam,
+    const { stdId, semester, examType } = req.query;
+    const result = await CSEResult.findOne({
+      stdId: new RegExp(stdId, "i"),
+      semester: new RegExp(semester, "i"),
+      examType: new RegExp(examType, "i"),
     });
     res.status(200).json({
       status: true,
