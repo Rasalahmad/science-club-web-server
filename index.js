@@ -16,7 +16,7 @@ const corsOrigin = {
   credentials: true,
   optionSuccessStatus: 200,
 };
-app.use(cors(corsOrigin));
+app.use(cors());
 
 // database connection
 mongoose.set("strictQuery", false);
