@@ -1,8 +1,7 @@
-import CSEResult from "../modules/cseModel.js";
+import BBAResult from "../modules/bbaModel.js";
 
-// cse
-export const postCseResult = async (req, res, next) => {
-  const result = new CSEResult(req.body);
+export const postBbaResult = async (req, res, next) => {
+  const result = new BBAResult(req.body);
   try {
     await result.save();
     res
@@ -26,10 +25,10 @@ export const postCseResult = async (req, res, next) => {
   }
 };
 
-export const getCseResult = async (req, res, next) => {
+export const getBbaResult = async (req, res, next) => {
   try {
     const { stdId, semester, examType } = req.query;
-    const result = await CSEResult.findOne({
+    const result = await BBAResult.findOne({
       stdId: new RegExp(stdId, "i"),
       semester: new RegExp(semester, "i"),
       examType: new RegExp(examType, "i"),

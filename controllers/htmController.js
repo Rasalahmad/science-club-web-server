@@ -1,8 +1,7 @@
-import CSEResult from "../modules/cseModel.js";
+import HTMResult from "../modules/htmModel.js";
 
-// cse
-export const postCseResult = async (req, res, next) => {
-  const result = new CSEResult(req.body);
+export const postHtmResult = async (req, res, next) => {
+  const result = new HTMResult(req.body);
   try {
     await result.save();
     res
@@ -26,10 +25,10 @@ export const postCseResult = async (req, res, next) => {
   }
 };
 
-export const getCseResult = async (req, res, next) => {
+export const getHtmResult = async (req, res, next) => {
   try {
     const { stdId, semester, examType } = req.query;
-    const result = await CSEResult.findOne({
+    const result = await HTMResult.findOne({
       stdId: new RegExp(stdId, "i"),
       semester: new RegExp(semester, "i"),
       examType: new RegExp(examType, "i"),
