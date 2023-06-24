@@ -31,6 +31,10 @@ const htmResultSchema = mongoose.Schema({
         type: Number,
         required: true,
       },
+      creditHours: {
+        type: Number,
+        required: true,
+      },
     },
   ],
 });
