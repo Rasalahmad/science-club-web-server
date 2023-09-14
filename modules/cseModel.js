@@ -19,19 +19,19 @@ const cseResultSchema = mongoose.Schema({
   },
   courses: [
     {
-      courseId: {
+      course_id: {
         type: String,
         required: true,
       },
-      courseName: {
+      name: {
         type: String,
         required: true,
       },
-      cgpa: {
+      marks: {
         type: Number,
         required: true,
       },
-      creditHours: {
+      credit: {
         type: Number,
         required: true,
       },
