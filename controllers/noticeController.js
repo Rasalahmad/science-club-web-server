@@ -1,7 +1,7 @@
 import Notice from "../modules/noticeModel.js";
 
 export const postNotice = async (req, res, next) => {
-  const notice = new Notice({ ...req.body, image: req?.files[0]?.filename });
+  const notice = new Notice(req.body);
   try {
     await notice.save();
     res.status(200).json({

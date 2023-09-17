@@ -1,7 +1,7 @@
 import Event from "../modules/eventModel.js";
 
 export const postEvent = async (req, res, next) => {
-  const event = new Event({ ...req.body, image: req?.files[0]?.filename });
+  const event = new Event(req.body);
   try {
     await event.save();
     res.status(200).json({

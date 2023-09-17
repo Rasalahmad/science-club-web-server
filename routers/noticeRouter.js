@@ -9,7 +9,7 @@ import avatarUpload from "../middleware/avatarUpload.js";
 
 const router = express.Router();
 
-router.post("/", avatarUpload, postNotice);
+router.post("/", postNotice);
 router.get("/", getNotice);
 router.put("/:id", updateNotice);
 router.delete("/:id", deleteNotice);
