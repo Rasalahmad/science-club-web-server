@@ -10,7 +10,7 @@ import avatarUpload from "../middleware/avatarUpload.js";
 
 const router = express.Router();
 
-router.post("/", avatarUpload, postEvent);
+router.post("/", postEvent);
 router.get("/", getEvent);
 router.put("/:id", updateEvent);
 router.delete("/:id", deleteEvent);

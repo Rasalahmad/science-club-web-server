@@ -13,7 +13,7 @@ import multer from "multer";
 const app = express();
 
 const corsOrigin = {
-  origin: "http://localhost:3001",
+  origin: "https://club-compass.netlify.app",
   credentials: true,
   optionSuccessStatus: 200,
 };
